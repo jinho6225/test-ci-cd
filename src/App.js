@@ -7,6 +7,9 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (todo === "") {
+      return;
+    }
     setTodos([...todos, todo]);
     setTodo("");
   };

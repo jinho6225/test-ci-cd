@@ -1,29 +1,27 @@
-# name: testing-ci-cd
+name: testing-ci-cd
 
-# on:
-#   push:
-#     branches: [master]
+on:
+  push:
+    branches: [master]
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#       - uses: actions/checkout@v2
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
-#       - name: install dependency
-#         run: yarn install
+      - name: install dependency
+        run: yarn install
 
-#       - name: start port 3000
-#         run: yarn start
+      - name: deploy with gh-page
+        run: yarn deploy
 
-#       - name: test with jest
-#         run: yarn test
+      - name: test with jest
+        run: yarn test
 
-#       # Runs a set of commands using the runners shell
-#       - name: deploy with gh-page
-#         run: yarn deploy
+      # Runs a set of commands using the runners shell
 
-#       - name: notification for completed deployment
-#         run: echo it's completed
+      - name: notification for completed deployment
+        run: echo it's completed

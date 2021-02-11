@@ -11,6 +11,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - run: git config --global user.email "jinho6225@hotmail.com"
+      - run: git config --global user.name "jinho6225"
 
       - name: install dependency
         run: yarn install
@@ -19,6 +21,4 @@ jobs:
         run: yarn ci
 
       - name: deploy to github-pages
-      - run: git config --global user.email "jinho6225@hotmail.com"
-      - run: git config --global user.name "jinho6225"
-      - run: yarn deploy
+        run: yarn deploy

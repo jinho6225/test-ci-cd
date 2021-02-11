@@ -17,8 +17,3 @@ jobs:
 
       - name: start port 3000 and test it
         run: yarn ci
-
-      # Runs a set of commands using the runners shell
-
-      - name: notification for completed deployment
-        run: echo it's completed

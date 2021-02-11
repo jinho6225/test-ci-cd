@@ -16,11 +16,17 @@ function App() {
       <h2 className="todo_list">Todo List</h2>
       <form>
         <input
+          className="input_field"
           type="text"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
         />
-        <input type="submit" value="ADD" onClick={handleSubmit} />
+        <input
+          className="add_btn"
+          type="submit"
+          value="ADD"
+          onClick={handleSubmit}
+        />
         <ul>
           <List todos={todos} />
         </ul>

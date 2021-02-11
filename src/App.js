@@ -7,7 +7,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (todo === "") {
+    if (todo.task === "") {
       return;
     }
     setTodos([...todos, todo]);

@@ -19,4 +19,7 @@ jobs:
         run: yarn ci
 
       - name: deploy to github-pages
-        run: yarn deploy
+        run: |
+        git config --global user.email "jinho6225@hotmail.com"
+        git config --global user.name "jinho6225"
+        yarn deploy

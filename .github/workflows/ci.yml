@@ -11,14 +11,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - run: git config --global user.email "jinho6225@hotmail.com"
-      - run: git config --global user.name "jinho6225"
 
       - name: install dependency
         run: yarn install
 
       - name: start port 3000 and test it
         run: yarn ci
-
-      - name: deploy 🚀 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
-        run: yarn deploy

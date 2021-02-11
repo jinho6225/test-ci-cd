@@ -31,5 +31,6 @@ describe("Puppeteer test", () => {
     await page.click(".add_btn", { clickCount: 1 });
     const liArray = await page.$$eval("li", (li) => li.length);
     expect(liArray).toBe(2);
+    browser.close();
   });
 });

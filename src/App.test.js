@@ -57,17 +57,18 @@ describe("Puppeteer test", () => {
     const liArray = await page.$$eval("li", (li) => li.length);
     expect(liArray).toBe(1);
     browser.close();
-
-    it("test for removeTask2", async () => {
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-      await page.goto("http://localhost:3000/test-ci-cd");
-      await page.type(".input_field", "CI/CD");
-      await page.click(".add_btn", { clickCount: 1 });
-      await page.type(".input_field", "testing with jest");
-      await page.click(".add_btn", { clickCount: 1 });
-      await page.click("li > span", { clickCount: 1 });
-      const liArray = await page.$$eval("li", (li) => li.length);
-      expect(liArray).toBe(2);
-      browser.close();  
+  });
+  it("test for removeTask2", async () => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto("http://localhost:3000/test-ci-cd");
+    await page.type(".input_field", "CI/CD");
+    await page.click(".add_btn", { clickCount: 1 });
+    await page.type(".input_field", "testing with jest");
+    await page.click(".add_btn", { clickCount: 1 });
+    await page.click("li > span", { clickCount: 1 });
+    const liArray = await page.$$eval("li", (li) => li.length);
+    expect(liArray).toBe(2);
+    browser.close();
+  });
 });

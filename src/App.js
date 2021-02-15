@@ -13,8 +13,21 @@ function App() {
     setTodos([...todos, todo]);
     setTodo({ task: "", completed: false });
   };
-  const removeTodo = (todo) => {
-    let newArr = todos.filter((el) => el.task !== todo.task);
+  const isCompleted = (idx) => {
+    let newTodos = todos.map((todo, i) => {
+      if (idx === i) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      } else {
+        return todo;
+      }
+    });
+    setTodos(newTodos);
+  };
+  const removeTask = (idx) => {
+    let newArr = todos.filter((el, i) => i !== idx);
     setTodos(newArr);
   };
 
@@ -34,10 +47,8 @@ function App() {
           value="ADD"
           onClick={handleSubmit}
         />
-        <ul>
-          <List todos={todos} removeTodo={removeTodo} />
-        </ul>
       </form>
+      <List todos={todos} isCompleted={isCompleted} removeTask={removeTask} />
     </div>
   );
 }

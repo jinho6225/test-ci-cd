@@ -1,18 +1,29 @@
-function List({ todos, removeTodo }) {
+function List({ todos, isCompleted, removeTask }) {
   return (
     <>
-      {todos.map((todo, idx) => {
-        return (
-          <li
-            key={idx}
-            onClick={() => {
-              removeTodo(todo);
-            }}
-          >
-            {todo.task}
-          </li>
-        );
-      })}
+      <ul>
+        {todos.map((todo, idx) => {
+          return (
+            <li key={idx}>
+              <span
+                onClick={() => {
+                  isCompleted(idx);
+                }}
+                className={todo.completed === true ? "strike" : ""}
+              >
+                {todo.task}
+              </span>
+              <button
+                onClick={() => {
+                  removeTask(idx);
+                }}
+              >
+                Del
+              </button>
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 }

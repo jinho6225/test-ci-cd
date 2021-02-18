@@ -20,11 +20,16 @@ function App() {
       return;
     }
     setTodos([...todos, todo]);
-    setTodo({ title: "", completed: false });
+    setTodo({
+      id: Date.now(),
+      title: "",
+      completed: false,
+      userId: 2,
+    });
   };
-  const isCompleted = (idx) => {
+  const isCompleted = (id) => {
     let newTodos = todos.map((todo, i) => {
-      if (idx === i) {
+      if (todo.id === id) {
         return {
           ...todo,
           completed: !todo.completed,
@@ -35,8 +40,8 @@ function App() {
     });
     setTodos(newTodos);
   };
-  const removeTask = (idx) => {
-    let newArr = todos.filter((el, i) => i !== idx);
+  const removeTask = (id) => {
+    let newArr = todos.filter((el, i) => el.id !== id);
     setTodos(newArr);
   };
 

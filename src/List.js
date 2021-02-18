@@ -11,11 +11,13 @@ function List({ todos, isCompleted, removeTask }) {
                 }}
                 className={todo.completed === true ? "strike" : ""}
               >
-                {todo.task}
-              </span>
+                {todo.title}
+              </span>{" "}
               <button
                 onClick={() => {
-                  removeTask(idx);
+                  if (todo.completed) {
+                    removeTask(idx);
+                  }
                 }}
               >
                 Del

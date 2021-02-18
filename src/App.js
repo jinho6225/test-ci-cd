@@ -1,17 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import List from "./List";
 
 function App() {
-  const [todo, setTodo] = useState({ task: "", completed: false });
+  const [todo, setTodo] = useState({ title: "", completed: false });
   const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then((res) => res.json())
+      .then((data) => {
+        let fileteredData = data.filter((todo, id) => todo.userId === 2);
+        setTodos(fileteredData);
+      });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (todo.task === "") {
+    if (todo.title === "") {
       return;
     }
     setTodos([...todos, todo]);
-    setTodo({ task: "", completed: false });
+    setTodo({ title: "", completed: false });
   };
   const isCompleted = (idx) => {
     let newTodos = todos.map((todo, i) => {
@@ -38,8 +47,8 @@ function App() {
         <input
           className="input_field"
           type="text"
-          value={todo.task}
-          onChange={(e) => setTodo({ ...todo, task: e.target.value })}
+          value={todo.title}
+          onChange={(e) => setTodo({ ...todo, title: e.target.value })}
         />
         <input
           className="add_btn"

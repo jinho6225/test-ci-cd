@@ -7,15 +7,15 @@ function List({ todos, isCompleted, removeTask }) {
             <li key={idx}>
               <span
                 onClick={() => {
-                  isCompleted(idx);
+                  isCompleted(todo.id);
                 }}
                 className={todo.completed === true ? "strike" : ""}
               >
-                {todo.task}
-              </span>
+                {todo.title}
+              </span>{" "}
               <button
                 onClick={() => {
-                  removeTask(idx);
+                  removeTask(todo.id);
                 }}
               >
                 Del

@@ -2,7 +2,7 @@ function List({ todos, isCompleted, removeTask }) {
   return (
     <>
       <ul>
-        {todos.map((todo, idx) => {
+        {todos?.map((todo, idx) => {
           return (
             <li key={idx}>
               <span

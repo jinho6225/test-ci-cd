@@ -19,12 +19,17 @@ function App() {
     if (todo.title === "") {
       return;
     }
-    setTodos([...todos, todo]);
-    setTodo({
+    const newTodo = {
       id: Date.now(),
-      title: "",
+      title: todo.title,
       completed: false,
       userId: 2,
+    };
+
+    setTodos([...todos, newTodo]);
+    setTodo({
+      title: "",
+      completed: false,
     });
   };
   const isCompleted = (id) => {
@@ -49,18 +54,18 @@ function App() {
     <div className="App">
       <h2 className="todo_list">Todo List</h2>
       <form>
+        <label htmlFor="input_field">What needs to be done?</label>
+        <br />
         <input
+          id="input_field"
           className="input_field"
           type="text"
           value={todo.title}
           onChange={(e) => setTodo({ ...todo, title: e.target.value })}
         />
-        <input
-          className="add_btn"
-          type="submit"
-          value="ADD"
-          onClick={handleSubmit}
-        />
+        <button className="add_btn" onClick={handleSubmit}>
+          ADD
+        </button>
       </form>
       <List todos={todos} isCompleted={isCompleted} removeTask={removeTask} />
     </div>

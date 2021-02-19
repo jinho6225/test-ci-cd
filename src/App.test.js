@@ -1,13 +1,25 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { fireEvent, render } from "@testing-library/react";
 
 import App from "./App";
+import List from "./List";
 
-describe("Jest test", () => {
-  test("it works", () => {
-    const root = document.createElement("div");
-    ReactDOM.render(<App />, root);
+describe("App component", () => {
+  test("renders the correct content", () => {
+    const { getByText, getByLabelText, getAllByDisplayValue } = render(<App />);
+    getByText("Todo List");
+    getByLabelText("What needs to be done?");
+    getByText("ADD");
+  });
 
-    expect(root.querySelector("h2").textContent).toBe("Todo List");
+  test("allows users to add todos to their list", () => {
+    const { getByText, getByLabelText, getAllByDisplayValue } = render(<App />);
+
+    const input = getByLabelText("What needs to be done?");
+    const button = getByText("ADD");
+    fireEvent.change(input, { target: { value: "study testing" } });
+    fireEvent.click(button);
+
+    getByText("study testing");
   });
 });

@@ -14,6 +14,7 @@ function List({ todos, isCompleted, removeTask }) {
                 {todo.title}
               </span>{" "}
               <button
+                data-testid="btnRmv"
                 onClick={() => {
                   removeTask(todo.id);
                 }}

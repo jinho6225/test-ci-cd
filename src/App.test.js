@@ -13,7 +13,7 @@ describe("App component", () => {
   });
 
   test("allows users to add todos to their list", () => {
-    const { getByText, getByLabelText, getByTestId } = render(<App />);
+    const { debug, getByText, getByLabelText, getByTestId } = render(<App />);
 
     const input = getByLabelText("What needs to be done?");
     const button = getByText("ADD");
